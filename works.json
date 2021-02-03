@@ -1,0 +1,27 @@
+[
+	{
+		"_id":123,
+		"picture":"http://travaux.jpg",
+		"project":{
+			"_id":12345,
+			"works":[
+				"http://slider_1.jpg",
+				"http://slider_1.jpg",
+				"http://slider_1.jpg",
+				"http://slider_1.jpg"
+			],
+			"skills":[{
+				"title":"Skills",
+				"skills_img":[
+					"http://skill.jpg",
+					"http://skill.jpg"
+				]
+			}],
+			"project":{
+				"title":"Project",
+				"about":"lorem ipsum"
+			}
+		}
+
+	}
+]
