@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 // connexion bdd
-mongoose.connect(process.env.MONGOOSE, {
+mongoose.connect(process.env.MONGODB_URI, {
 	useCreateIndex: true,
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -27,6 +27,6 @@ app.all("*", (req, res) => {
 	}
 });
 
-app.listen(3100, () => {
+app.listen(process.env.PORT || 3100, () => {
 	console.log("server portfolio started");
 });
