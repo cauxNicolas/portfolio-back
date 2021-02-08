@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Client = require("../model/Client");
+// Mail
+const API_KEY = process.env.API_KEY;
+const DOMAIN = process.env.DOMAIN;
+const mailgun = require("mailgun-js")({ apiKey: API_KEY, domain: DOMAIN });
 
 router.post("/contact", async (req, res) => {
 	// regExp
@@ -30,15 +34,30 @@ router.post("/contact", async (req, res) => {
 		const testLastname = validateInput(lastname);
 
 		if (testEmail === true && testName === true && testLastname === true) {
+			const mail = {
+				from: `${name} ${lastname} <${email}>`,
+				to: "nicaux95@gmail.com",
+				subject: "Client formulaire portfolio",
+				text: `${textarea}`,
+			};
+
+			await mailgun.messages().send(mail, (error, body) => {
+				if (!error) {
+					console.log("ok mail envoyé");
+				}
+				return res.status(401).json(error);
+			});
+
 			const search = await Client.findOne({ email: email });
 			// si client envoie un 2e message
 			if (search) {
 				search.textarea.push(textarea);
 				await search.save();
-				res.status(200).json("Votre message à bien été rajouté !");
+				await res
+					.status(200)
+					.json("Votre message à bien été rajouté !");
 			} else {
 				try {
-					console.log(testEmail, testName);
 					const newClient = new Client({
 						name,
 						lastname,
@@ -46,9 +65,9 @@ router.post("/contact", async (req, res) => {
 						textarea,
 					});
 					await newClient.save();
-					res.status(200).json(
-						"Merci ! Votre message est bien enregistré"
-					);
+					await res
+						.status(200)
+						.json("Merci ! Votre message est bien enregistré");
 				} catch (error) {
 					res.status(400).json({ message: error.message });
 				}

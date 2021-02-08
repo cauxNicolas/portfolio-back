@@ -21,7 +21,7 @@ app.use(Contact);
 
 app.all("*", (req, res) => {
 	try {
-		res.status(200).json("app.all : route inconnue");
+		res.status(200).json({ message: "Portfolio started !" });
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}
