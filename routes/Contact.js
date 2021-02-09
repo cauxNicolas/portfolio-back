@@ -37,7 +37,7 @@ router.post("/contact", async (req, res) => {
 			const mail = {
 				from: `${name} ${lastname} <${email}>`,
 				to: "nicaux95@gmail.com",
-				subject: "Client formulaire portfolio",
+				subject: "nicaux.com - message",
 				text: `${textarea}`,
 			};
 

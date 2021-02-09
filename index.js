@@ -3,6 +3,7 @@ const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const helmet = require("helmet");
 
 // connexion bdd
 mongoose.connect(process.env.MONGODB_URI, {
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const app = express();
 app.use(formidable());
 app.use(cors());
+app.use(helmet());
 
 // Routes
 const Contact = require("./routes/Contact");
