@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const Connect = mongoose.model("Connect", {
-	email: { type: String, unique: true },
+	email: String,
 	hash: String,
 	salt: String,
+	token: String,
 });
 
 module.exports = Connect;

@@ -20,6 +20,12 @@ app.use(helmet());
 // Routes
 const Contact = require("./routes/Contact");
 app.use(Contact);
+const Works = require("./routes/Works");
+app.use(Works);
+const AddWork = require("./routes/AddWork");
+app.use(AddWork);
+const Admin = require("./routes/Admin");
+app.use(Admin);
 
 app.all("*", (req, res) => {
 	try {
