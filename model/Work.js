@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const Work = mongoose.model("Work", {
-	cover: String,
+	cover: Object,
 	content: {
-		slider: [String],
+		_id: mongoose.Types.ObjectId,
+		slider: [Object],
 		skills: [String],
 		title: String,
 		description: String,
