@@ -5,6 +5,7 @@ const encBase64 = require("crypto-js/enc-base64");
 const Connect = require("../model/Connect");
 
 router.post("/react-admin-connect", async (req, res) => {
+	console.log(req.fields);
 	if (req.fields.passOne !== "" && req.fields.passTwo !== "") {
 		const validatePassOne = (value) => {
 			const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;

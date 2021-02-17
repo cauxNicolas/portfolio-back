@@ -4,7 +4,7 @@
 		"picture":"http://travaux.jpg",
 		"project":{
 			"_id":12345,
-			"works":[
+			"slider":[
 				"http://slider_1.jpg",
 				"http://slider_1.jpg",
 				"http://slider_1.jpg",
@@ -17,9 +17,9 @@
 					"http://skill.jpg"
 				]
 			}],
-			"project":{
+			"about":{
 				"title":"Project",
-				"about":"lorem ipsum"
+				"description":"lorem ipsum"
 			}
 		}
 
