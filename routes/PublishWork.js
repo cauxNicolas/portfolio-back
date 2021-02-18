@@ -14,7 +14,7 @@ const cloudinary = require("cloudinary").v2;
 // Cloudinary config
 cloudinary.config({
 	cloud_name: process.env.CLOUD_NAME,
-	api_key: process.env.API_KEY,
+	api_key: process.env.API_KEY_CLOUD,
 	api_secret: process.env.API_SECRET,
 });
 
@@ -35,17 +35,19 @@ router.post("/publish-work", isAuthenticated, async (req, res) => {
 			);
 			tabResult.push(resultSlider);
 		}
-		console.log(tabResult);
 		// checkbox
-		const titre = req.fields;
-		console.log("--->", titre);
-
+		const checkbox = req.fields;
+		const newCheckBox = Object.values(checkbox);
+		const tabSkills = [];
+		for (let i = 2; i < newCheckBox.length; i++) {
+			tabSkills.push(newCheckBox[i]);
+		}
 		const newWork = new Work({
 			cover: resultCover,
 			content: {
 				_id: new mongoose.Types.ObjectId(),
 				slider: tabResult,
-				skills: [1, 2, 3, 4],
+				skills: tabSkills,
 				title: req.fields.valueTitle,
 				description: req.fields.valueTextarea,
 			},
