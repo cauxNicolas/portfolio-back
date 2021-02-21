@@ -46,6 +46,7 @@ router.post("/publish-work", isAuthenticated, async (req, res) => {
 			cover: resultCover,
 			content: {
 				_id: new mongoose.Types.ObjectId(),
+				created: new Date(),
 				slider: tabResult,
 				skills: tabSkills,
 				title: req.fields.valueTitle,
