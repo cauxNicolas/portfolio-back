@@ -4,7 +4,7 @@ const Work = require("../model/Work");
 
 router.get("/", async (req, res) => {
 	try {
-		const data = await Work.find().sort({ created: "desc" });
+		const data = await Work.find().sort();
 		res.status(200).json(data);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
