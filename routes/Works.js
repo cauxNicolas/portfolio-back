@@ -5,7 +5,7 @@ const work = require("../model/Work");
 router.get("/", async (req, res) => {
 	try {
 		const data = await work.find();
-		res.status(200).json("ok tu recup la page works");
+		res.status(200).json(data);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}
