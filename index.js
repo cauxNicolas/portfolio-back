@@ -26,6 +26,8 @@ const PublishWork = require("./routes/PublishWork");
 app.use(PublishWork);
 const Admin = require("./routes/Admin");
 app.use(Admin);
+const Work = require("./routes/Work");
+app.use(Work);
 
 app.all("*", (req, res) => {
 	try {
