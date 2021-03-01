@@ -7,9 +7,10 @@ const DOMAIN = process.env.DOMAIN;
 const mailgun = require("mailgun-js")({ apiKey: API_KEY, domain: DOMAIN });
 
 router.post("/contact", async (req, res) => {
+	console.log(req.fields);
 	// regExp
 	const validateEmail = (value) => {
-		const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+		const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{1,3}$/;
 		return re.test(String(value).toLowerCase());
 	};
 
