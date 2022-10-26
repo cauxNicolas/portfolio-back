@@ -38,10 +38,10 @@ app.all("*", (req, res) => {
 	}
 });
 
-/* app.listen(process.env.PORT || 3100, () => {
+app.listen(process.env.PORT || 3100, () => {
 	console.log("server portfolio started");
-}); */
-
-app.listen(process.env.PORT, () => {
-	wakeDyno("https://portfolio-client-nicaux.herokuapp.com/").start(); // DYNO_URL should be the url of your Heroku app
 });
+
+/* app.listen(process.env.PORT, () => {
+	wakeDyno("https://portfolio-client-nicaux.herokuapp.com/").start(); // DYNO_URL should be the url of your Heroku app
+}); */
