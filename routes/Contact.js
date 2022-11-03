@@ -13,6 +13,8 @@ router.post("/contact", async (req, res) => {
 		return re.test(String(value).toLowerCase());
 	}; */
 
+	console.log(req.fields);
+
 	const validateInput = (value) => {
 		const re = /^[a-z0-9_-]{3,30}$/;
 		return re.test(String(value).toLowerCase());
@@ -37,28 +39,26 @@ router.post("/contact", async (req, res) => {
 			/* testEmail === true &&  */ testName === true &&
 			testLastname === true
 		) {
-			const mail = {
+			/* const mail = {
 				from: `${name} ${lastname} <${email}>`,
 				to: "nicaux95@gmail.com",
 				subject: "nicaux.com - message",
 				text: `${textarea}`,
-			};
+			}; */
 
-			await mailgun.messages().send(mail, (error, body) => {
+			/* await mailgun.messages().send(mail, (error, body) => {
 				if (!error) {
 					console.log("ok mail envoyé");
 				}
 				return res.status(401).json(error);
-			});
+			}); */
 
 			const search = await Client.findOne({ email: email });
 			// si client envoie un 2e message
 			if (search) {
 				search.textarea.push(textarea);
 				await search.save();
-				await res
-					.status(200)
-					.json("Votre message à bien été rajouté !");
+				await res.status(200).json("Votre message à bien été rajouté !");
 			} else {
 				try {
 					const newClient = new Client({
