@@ -39,19 +39,19 @@ router.post("/contact", async (req, res) => {
 			/* testEmail === true &&  */ testName === true &&
 			testLastname === true
 		) {
-			/* const mail = {
+			const mail = {
 				from: `${name} ${lastname} <${email}>`,
 				to: "nicaux95@gmail.com",
 				subject: "nicaux.com - message",
 				text: `${textarea}`,
-			}; */
+			};
 
-			/* await mailgun.messages().send(mail, (error, body) => {
+			await mailgun.messages().send(mail, (error, body) => {
 				if (!error) {
 					console.log("ok mail envoyé");
 				}
 				return res.status(401).json(error);
-			}); */
+			});
 
 			const search = await Client.findOne({ email: email });
 			// si client envoie un 2e message
