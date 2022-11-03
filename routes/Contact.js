@@ -8,10 +8,10 @@ const mailgun = require("mailgun-js")({ apiKey: API_KEY, domain: DOMAIN });
 
 router.post("/contact", async (req, res) => {
 	// regExp
-	/* const validateEmail = (value) => {
+	const validateEmail = (value) => {
 		const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{1,3}$/;
 		return re.test(String(value).toLowerCase());
-	}; */
+	};
 
 	console.log(req.fields);
 
@@ -31,7 +31,7 @@ router.post("/contact", async (req, res) => {
 		const email = req.fields.email;
 		const textarea = req.fields.textarea;
 
-		//const testEmail = validateEmail(email);
+		const testEmail = validateEmail(email);
 		const testName = validateInput(name);
 		const testLastname = validateInput(lastname);
 
